@@ -8,9 +8,8 @@ export async function connectWallet() {
   if (!window.ethereum) throw new Error("กรุณาติดตั้ง MetaMask");
 
   const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-  const chainId = parseInt(chainIdHex, 16);
   const chainIdHex = await window.ethereum.request({ method: "eth_chainId" });
-//   const chainId = Number(chainIdHex);
+  const chainId = Number(chainIdHex);
 
   if (chainId !== TARGET_CHAIN_ID) {
     // ขอให้ผู้ใช้สลับเชน
